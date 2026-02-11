@@ -1,0 +1,15 @@
+
+<!DOCTYPE HTML>
+<head>
+
+	<title>Halaman 1</title>
+</head>
+
+<body>
+
+	<h2>ini halaman 2</h2>
+	<a href="halaman_1.html">ke Halaman 2</a>
+
+</body>
+</html>
+

@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Pribadi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --white: #FFFFFF;
+            --yellow: #FFD166;
+            --light-yellow: #FFE9B1;
+            --brown: #8B4513;
+            --light-brown: #A67B5B;
+            --dark-brown: #5D4037;
+            --gray: #F5F5F5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--white);
+            color: var(--dark-brown);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--brown);
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 2rem;
+            border-bottom: 2px solid var(--yellow);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--brown);
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: var(--light-brown);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--brown);
+        }
+
+        .logo span {
+            color: var(--yellow);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--yellow);
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--yellow) 0%, var(--light-yellow) 100%);
+            padding: 8rem 0 4rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            color: var(--brown);
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--dark-brown);
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--brown);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: 2px solid var(--brown);
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--brown);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 0;
+        }
+
+        section:nth-child(even) {
+            background-color: var(--gray);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .profile-img {
+			width: 100%;
+			max-width: 300px;
+			border-radius: 50%;
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+			border: 8px double #3498db; /* Biru dengan style double */
+			padding: 3px; /* Jarak antara gambar dan border */
+
+        }
+
+        /* Education Section */
+        .education-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .education-timeline::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--yellow);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: var(--white);
+            top: 20px;
+            border-radius: 50%;
+            z-index: 1;
+            border: 3px solid var(--yellow);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::after {
+            left: -10px;
+        }
+
+        .timeline-date {
+            font-weight: 600;
+            color: var(--light-brown);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Materials Section */
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .material-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .material-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .material-icon {
+            background-color: var(--yellow);
+            padding: 1.5rem;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .material-content {
+            padding: 1.5rem;
+        }
+
+        .material-content h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Tasks Section */
+        .tasks-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .task-item {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .task-info h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .task-date {
+            color: var(--light-brown);
+            font-size: 0.9rem;
+        }
+
+        .task-link .btn {
+            background-color: var(--yellow);
+            color: var(--dark-brown);
+            border: 2px solid var(--yellow);
+        }
+
+        .task-link .btn:hover {
+            background-color: transparent;
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            height: 250px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-brown);
+            color: var(--white);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--yellow);
+        }
+
+        .copyright {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--light-yellow);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 1rem 0;
+            }
+
+            .logo {
+                margin-bottom: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .education-timeline::before {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-content::after {
+                left: -10px;
+            }
+
+            .task-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .task-link {
+                margin-top: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">Website<span>Pribadi</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#pendidikan">Pendidikan</a></li>
+                    <li><a href="#materi">Materi</a></li>
+                    <li><a href="#tugas">Tugas</a></li>
+                    <li><a href="#galeri">Galeri</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">☰</div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>Achmad Ivan Aprilio Saputra</h1>
+            <p>Saya adalah seorang pengembang web ini.Mari jelajahi lebih lanjut tentang saya dan karya saya.</p>
+            <a href="#pendidikan" class="btn">Pelajari Lebih Lanjut</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="tentang">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tentang Saya</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Halo, Saya Achmad Ivan Aprilio Saputra</h3>
+                    <p>Saya adalah seorang pengembang web ini HTML, CSS. Saya memiliki minat yang kuat dalam menciptakan pengalaman web yang menarik dan fungsional.</p>
+                    
+                </div>
+                <div class="about-image">
+                    <img src="foto ppp.JPG" width="300px"><br>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="pendidikan">
+        <div class="container">
+            <div class="section-title">
+                <h2>Pendidikan & Pelatihan</h2>
+            </div>
+            <div class="education-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2014 - 2020</div>
+                        <h3>MI NURUL HUDA 1</h3>
+                        
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2020 - 2023</div>
+                        <h3>SMP NEGERI 4 KOTA</h3>
+                        
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2023-2026</div>
+                        <h3>SMA NEGERI 1 KOTA</h3>
+                        
+                    </div>
+               
+    </section>
+
+    <!-- Materials Section -->
+    <section id="materi">
+        <div class="container">
+            <div class="section-title">
+                <h2>Materi Pembelajaran</h2>
+            </div>
+            <div class="materials-grid">
+                <div class="material-card">
+                    <div class="material-icon">📄</div>
+                    <div class="material-content">
+                        <h3>HTML Dasar</h3>
+                        <p>Struktur dasar HTML, tag, elemen, atribut, dan semantic HTML.</p>
+                    </div>
+                </div>
+                <div class="material-card">
+                    <div class="material-icon">🎨</div>
+                    <div class="material-content">
+                        <h3>CSS Dasar</h3>
+                        <p>Selektor, properti, nilai, box model, dan layout dasar dengan CSS.</p>
+                    </div>
+                </div>
+                <div class="material-card">
+                    <div class="material-icon">📐</div>
+                    <div class="material-content">
+                        <h3>CSS Layout</h3>
+                        <p>Flexbox, Grid, positioning, dan teknik layout modern lainnya.</p>
+                    </div>
+                </div>
+                <div class="material-card">
+                    <div class="material-icon">🎯</div>
+                    <div class="material-content">
+                        <h3>Responsive Design</h3>
+                        <p>Media queries, unit relatif, dan teknik membuat desain responsif.</p>
+                    </div>
+                </div>
+                <div class="material-card">
+                    <div class="material-icon">✨</div>
+                    <div class="material-content">
+                        <h3>CSS Advanced</h3>
+                        <p>Transisi, animasi, transformasi, dan efek visual lainnya.</p>
+                    </div>
+                </div>
+                <div class="material-card">
+                    <div class="material-icon">🚀</div>
+                    <div class="material-content">
+                        <h3>Best Practices</h3>
+                        <p>Organisasi kode, metodologi CSS, dan teknik optimasi performa.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tasks Section -->
+    <section id="tugas">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tugas Praktikum</h2>
+            </div>
+            <div class="tasks-list">
+                <div class="task-item">
+                    <div class="task-info">
+                        <h3>TUGAS LINK</h3>
+                        <p>link tugas.</p>
+                        <div class="task-date">Diselesaikan</div>
+                    </div>
+                    <div class="task-link">
+                        <a href="halaman_home.html" class="btn">Lihat Tugas</a>
+                    </div>
+                </div>
+                <div class="task-item">
+                    <div class="task-info">
+                        <h3>TUGAS TABEL</h3>
+                        <p>Membuat tabel data.</p>
+                        <div class="task-date">Diselesaikan</div>
+                    </div>
+                    <div class="task-link">
+                        <a href="tabel fixx.html" class="btn">Lihat Tugas</a>
+                    </div>
+                </div>
+                <div class="task-item">
+                    <div class="task-info">
+                        <h3>TUGAS FORM</h3>
+                        <p>Membuat form.</p>
+                        <div class="task-date">Diselesaikan</div>
+                    </div>
+                </div>
+                    <div class="task-link">
+                        <a href="tugas form.html" class="btn">Lihat Tugas</a>
+                    </div>
+                     
+                <div class="task-item">
+                    <div class="task-info">
+                        <h3>TUGAS ARDUINO</h3>
+                        <p>Membuat project arduino.</p>
+                        <div class="task-date">Diselesaikan</div>
+                    </div>
+                    <div class="task-link">
+                        <a href="tugasarduino.html" class="btn">Lihat Tugas</a>
+                    </div>
+                </div>
+                          
+                <div class="task-item">
+                    <div class="task-info">
+                        <h3>TUGAS PHYTON</h3>
+                        <p>Mengolah data.</p>
+                        <div class="task-date">Diselesaikan</div>
+                    </div>
+                    <div class="task-link">
+                        <a href="tugasphyton.html" class="btn">Lihat Tugas</a>
+                    </div>
+                
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="galeri">
+        <div class="container">
+            <div class="section-title">
+                <h2>Galeri Foto</h2>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="foto cod.JPG" alt="Foto 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="foto hs.JPG" alt="Foto 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="foto 2.JPG" alt="Foto 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="foto 3.JPG" alt="Foto 4">
+                </div>
+                
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3>Terima Kasih Telah Mengunjungi Website Saya</h3>
+                <p>Jangan ragu untuk menghubungi saya melalui media sosial di bawah ini.</p>
+				<p>-ivanaprilio9@gmail.com.</p>
+				<p>-0897-0000-000.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+                <div class="copyright">
+                    &copy; 2025 Website Pribadi. Semua Hak Dilindungi.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const nav = document.querySelector('nav ul');
+        
+        mobileMenu.addEventListener('click', () => {
+            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => {
+                if(window.innerWidth <= 768) {
+                    nav.style.display = 'none';
+                }
+            });
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if(window.innerWidth > 768) {
+                nav.style.display = 'flex';
+            } else {
+                nav.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
